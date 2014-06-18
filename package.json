@@ -1,0 +1,11 @@
+{
+  "name": "stock-visualizer",
+  "description": "stock-visualizer",
+  "author": "Steven Miller & Rahul Khanna",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "dashing-js": "~0.1.5"
+  },
+  "engine": "node >= 0.10"
+}
