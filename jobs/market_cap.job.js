@@ -1,6 +1,6 @@
 // need to update to only check during market hours
 
-current_time = new Date().toString().substr(16, 8);
+current_time = 94000
 
 if (current_time > 93000 && current_time < 160000) {
     setInterval(function() {
@@ -14,6 +14,7 @@ if (current_time > 93000 && current_time < 160000) {
             });
             response.on("end", function(err) {
                 data = JSON.parse(buffer);
+                console.log("%j", data);
                 current_valuation = data["query"]["results"]["quote"]["MarketCapitalization"];
                 send_event('market', {
                     current: current_valuation
