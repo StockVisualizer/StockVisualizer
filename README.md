@@ -13,4 +13,4 @@ cd StockVisualizer && npm install
 npm start
 ```
 
-4) Point your browser at http://localhost:3030/ and have fun!
+4) Point your browser to http://localhost:3030/ and have fun!
