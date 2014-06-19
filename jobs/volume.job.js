@@ -12,7 +12,6 @@ setInterval(function() {
             data = JSON.parse(buffer);
             // console.log("%j", data);
             current_volume = data["query"]["results"]["quote"]["Volume"];
-            console.log(current_volume);
             send_event('volume', {
                 value: current_volume
             });
