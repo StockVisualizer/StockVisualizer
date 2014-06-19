@@ -1,5 +1,5 @@
-class Dashing.Number extends Dashing.Widget
-  @accessor 'current', Dashing.AnimatedValue
+class Dashing.Number2 extends Dashing.Widget
+  @accessor 'peratio', Dashing.AnimatedValue
 
   onData: (data) ->
     if data.status
