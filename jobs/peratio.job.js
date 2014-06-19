@@ -27,7 +27,7 @@ callYahoo();
 setInterval(function() {
     current_time = new Date().toString().substr(16, 8);
     current_time_formatted = parseInt(current_time.substr(0, 2) + current_time.substr(3, 2) + current_time.substr(6, 5));
-    // if (current_time_formatted > 63000 && current_time_formatted < 130000) {
+    if (current_time_formatted > 63000 && current_time_formatted < 130000) {
         callYahoo();
-    // }
+    }
 }, 2 * 1000);

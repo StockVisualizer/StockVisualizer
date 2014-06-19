@@ -5,10 +5,6 @@
 #= require_directory .
 #= require_tree ../../widgets
 
-
-
-console.log("Yeah! The dashboard has started!")
-
 Dashing.on 'ready', ->
   Dashing.widget_margins ||= [5, 5]
   #[Vertical Margin, Horizontal Margin]
@@ -19,7 +15,7 @@ Dashing.on 'ready', ->
   Dashing.numColumns ||= 4
   #widgets need to be resized if this changes
 
-  Dashing.debugMode = true
+  Dashing.debugMode = false
   #logs incoming data to the console
 
   contentWidth = (Dashing.widget_base_dimensions[0] + Dashing.widget_margins[0] * 2) * Dashing.numColumns
