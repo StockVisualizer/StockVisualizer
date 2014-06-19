@@ -5,7 +5,7 @@ var points = [];
 
 function callYahoo() {
     var http = require("http");
-    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22FB%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
+    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + process.env.ticker + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
     var request = http.get(url, function(response) {
         var buffer = "";
         var data;
@@ -21,7 +21,6 @@ function callYahoo() {
                     y: Math.floor(current_price)
                 });
             }
-            // console.log(points);
             send_event('price', {
                 points: points
             });
@@ -33,7 +32,7 @@ callYahoo();
 
 setInterval(function() {
     var http = require("http");
-    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22FB%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
+    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + process.env.ticker + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
     var request = http.get(url, function(response) {
         var buffer = "";
         var data;
@@ -49,7 +48,6 @@ setInterval(function() {
                 x: ++last_x,
                 y: Math.floor(current_price)
             });
-            // console.log(points);
             send_event('price', {
                 points: points
             });
