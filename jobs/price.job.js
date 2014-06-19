@@ -14,7 +14,7 @@ function callYahoo() {
         });
         response.on("end", function(err) {
             data = JSON.parse(buffer);
-            current_price = data["query"]["results"]["quote"]["Ask"]
+            current_price = data["query"]["results"]["quote"]["AskRealtime"]
             for (var i = 1; i <= 10; i++) {
                 points.push({
                     x: i,
@@ -42,7 +42,7 @@ setInterval(function() {
         var last_x = points[points.length - 1].x;
         response.on("end", function(err) {
             data = JSON.parse(buffer);
-            current_price = data["query"]["results"]["quote"]["Ask"];
+            current_price = data["query"]["results"]["quote"]["AskRealtime"];
             points.shift();
             points.push({
                 x: ++last_x,
