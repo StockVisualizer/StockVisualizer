@@ -4,10 +4,8 @@
 
 // Run this once
 
-require('locus');
-
 setInterval(function() {
-  // console.log("PE Job is Running");
+  console.log("PE Job is Running");
   for (var k in connections) {
     conn_symbol = connections[k]["symbol"];
     conn_identifier = connections[k]["id"];
@@ -26,7 +24,7 @@ function getPE(conn_s, conn_i) {
     });
     response.on("end", function(err) {
       data = JSON.parse(buffer);
-      peratio = data["query"]["results"]["quote"]["PERatio"];
+      peratio = Math.floor(data["query"]["results"]["quote"]["PERatio"]);
       send_event('peratio', {
         peratio: peratio
       }, conn_i);

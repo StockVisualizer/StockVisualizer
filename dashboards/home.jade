@@ -7,6 +7,8 @@ block title
 block content
   div.gridster
     ul
+      li(data-row='1', data-col='1', data-sizex='2', data-sizey='1')
+        div(data-id='welcome', data-view='Text', data-title='Welcome to your Dashboard', data-text='Enter a stock ticker', data-moreinfo='Protip: You can drag the widgets around!')
       li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
         div(data-id='valuation', data-view='Number', data-title='Market Cap', data-prefix='$')
       li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
@@ -15,9 +17,7 @@ block content
         div(data-id='price', data-view='Graph', data-title='Price', style='background-color:#ff9618')
       li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
         div(data-id='peratio', data-view='Number2', data-title='PE Ratio')
-      li(data-row='1', data-col='1', data-sizex='2', data-sizey='1')
-        div(data-id='welcome', data-view='Text', data-title='Hello', data-text='This is your stock dashboard', data-moreinfo='Protip: You can drag the widgets around!')
-      //- li(data-row='1', data-col='3', data-sizex='1', data-sizey='1')
+     //- li(data-row='1', data-col='3', data-sizex='1', data-sizey='1')
       //-   div(data-id='twitter', data-view='Number3', data-title='Twitter Feed')
  
      //-   li(data-row='1', data-col='1', data-sizex='1', data-sizey='2')
