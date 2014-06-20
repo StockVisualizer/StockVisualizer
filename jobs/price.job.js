@@ -1,5 +1,5 @@
 setInterval(function() {
-  // console.log("Price Job is Running");
+  console.log("Price Job is Running");
   for (var k in connections) {
     conn_symbol = connections[k]["symbol"];
     conn_identifier = connections[k]["id"];
@@ -21,7 +21,6 @@ function getPrice(conn_s, conn_i) {
         response.on("end", function(err) {
             data = JSON.parse(buffer);
             current_price = data["query"]["results"]["quote"]["AskRealtime"]
-            console.log(current_price)
             for (var i = 1; i <= 10; i++) {
                 points.push({
                     x: i,
