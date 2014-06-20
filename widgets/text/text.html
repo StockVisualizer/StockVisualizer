@@ -6,6 +6,24 @@
 
 <p class="updated-at" data-bind="updatedAtMessage"></p>
 
-<center><form class="form" action="/search" method="post" accept-charset="utf-8">
+<center><form class="form" accept-charset="utf-8">
   <input class="input" type="text" name="ticker" autocomplete="off" placeholder="AAPL">
+  <input type="hidden" id="connectionID">
 </form></center>
+<script>
+  $(function() {
+    $(".form").on("submit", function(e) {
+      e.preventDefault();
+      var symbol = $(".input").val();
+      console.log(connectionID)
+      $.ajax({
+        type: 'put',
+        url: '/search',
+        data: {
+          symbol: symbol,
+          connectionID: connectionID
+        }
+      });
+    });
+  })
+</script>

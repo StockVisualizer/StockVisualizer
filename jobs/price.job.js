@@ -1,11 +1,17 @@
-//Grab the price from Yahoo API
-// Run this once
+setInterval(function() {
+  // console.log("Price Job is Running");
+  for (var k in connections) {
+    conn_symbol = connections[k]["symbol"];
+    conn_identifier = connections[k]["id"];
+    getPrice(conn_symbol, conn_identifier);
+  }
+}, 2 * 1000);
 
 var points = [];
 
-function callYahoo() {
+function getPrice(conn_s, conn_i) {
     var http = require("http");
-    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + process.env.ticker + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
+    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + conn_s + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
     var request = http.get(url, function(response) {
         var buffer = "";
         var data;
@@ -24,35 +30,33 @@ function callYahoo() {
             }
             send_event('price', {
                 points: points
-            });
+            }, conn_i);
         });
     });
 };
 
-callYahoo();
-
-setInterval(function() {
-    var http = require("http");
-    url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + process.env.ticker + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
-    var request = http.get(url, function(response) {
-        var buffer = "";
-        var data;
-        response.on("data", function(chunk) {
-            buffer += chunk;
-        });
-        var last_x = points[points.length - 1].x;
-        response.on("end", function(err) {
-            data = JSON.parse(buffer);
-            current_price = data["query"]["results"]["quote"]["AskRealtime"];
-            console.log(current_price)
-            points.shift();
-            points.push({
-                x: ++last_x,
-                y: Math.floor(current_price)
-            });
-            send_event('price', {
-                points: points
-            });
-        });
-    });
-}, 2 * 1000);
+// setInterval(function() {
+//     var http = require("http");
+//     url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + process.env.ticker + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
+//     var request = http.get(url, function(response) {
+//         var buffer = "";
+//         var data;
+//         response.on("data", function(chunk) {
+//             buffer += chunk;
+//         });
+//         var last_x = points[points.length - 1].x;
+//         response.on("end", function(err) {
+//             data = JSON.parse(buffer);
+//             current_price = data["query"]["results"]["quote"]["AskRealtime"];
+//             console.log(current_price)
+//             points.shift();
+//             points.push({
+//                 x: ++last_x,
+//                 y: Math.floor(current_price)
+//             });
+//             send_event('price', {
+//                 points: points
+//             });
+//         });
+//     });
+// }, 2 * 1000);
