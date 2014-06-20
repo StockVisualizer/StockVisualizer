@@ -1,5 +1,5 @@
 var dashing = require('dashing-js').Dashing();
-process.env.ticker = "AAPL"
+// process.env.ticker = "AAPL"
 // Set your auth token here
 //dashing.auth_token = 'YOUR_AUTH_TOKEN';
 
