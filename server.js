@@ -16,3 +16,5 @@ dashing.protected = function(req, res, next) {
 //dashing.default_dashboard = 'mydashboard';
 
 dashing.start();
+
+//NEED TO CHANGE VALUES TO FLOATS

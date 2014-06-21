@@ -3,7 +3,7 @@ extends layout
 block title
   | My Dashboard
 
-//- equivalent to application.html in Rails; manages what shows up on main page of the app
+//- The HTML content for the widgets
 block content
   div.gridster
     ul
@@ -17,10 +17,9 @@ block content
         div(data-id='price', data-view='Graph', data-title='Price', style='background-color:#ff9618')
       li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
         div(data-id='peratio', data-view='Number2', data-title='PE Ratio')
-     //- li(data-row='1', data-col='3', data-sizex='1', data-sizey='1')
-      //-   div(data-id='twitter', data-view='Number3', data-title='Twitter Feed')
- 
-     //-   li(data-row='1', data-col='1', data-sizex='1', data-sizey='2')
-    //- //-     div(data-id='buzzwords', data-view='List', data-unordered='true', data-title='Buzzwords', data-moreinfo='# of times said around the office')
-    //- center
-    //-   div(style='font-size: 12px') Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' -H "Content-Type: application/json" http://#{request.header('host')}/widgets/welcome
+  //- li(data-row='1', data-col='3', data-sizex='1', data-sizey='1')
+  //-   div(data-id='twitter', data-view='Number3', data-title='Twitter Feed')
+  //- li(data-row='1', data-col='1', data-sizex='1', data-sizey='2')
+  //-   div(data-id='buzzwords', data-view='List', data-unordered='true', data-title='Buzzwords', data-moreinfo='# of times said around the office')
+  //- center
+  //-   div(style='font-size: 12px') Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' -H "Content-Type: application/json" http://#{request.header('host')}/widgets/welcome
