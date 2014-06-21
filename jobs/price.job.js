@@ -3,6 +3,8 @@
   the updated figure to the price widget.
 */
 
+//NEED TO CHANGE VALUES TO FLOATS
+
 setInterval(function() {
   console.log("Price Job is Running");
   for (var k in connections) {
