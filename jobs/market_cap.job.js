@@ -3,8 +3,12 @@
   and sends the updated figure to the valuation widget.
 */
 
+// NEED TO CHANGE TO FLOATS
+
 setInterval(function() {
   console.log("Market Cap Job is Running");
+  // Every 2 seconds, iterate through all of the connections, update the data
+  // by connection
   for (var k in connections) {
     conn_symbol = connections[k]["symbol"];
     conn_identifier = connections[k]["id"];
