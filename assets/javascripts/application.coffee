@@ -13,15 +13,15 @@ Dashing.on 'ready', ->
   #note: if you are going to reduce the size of the widget base dimensions you will need to reduce the data size dimensions as well
   width = $(window).width()
   console.log width
-  if (width >= 1200)
-    columns = 4
-  else if (width >= 992 && width < 1200)
-    columns = 3
+  if width >= 1200
+    window.columns = 4
+  else if width >= 992 && width < 1200
+    window.columns = 3
   else
-    columns = 2
+    window.columns = 2
 
-  console.log columns
-  Dashing.numColumns ||= columns
+  console.log window.columns
+  Dashing.numColumns ||= window.columns
   #widgets need to be resized if this changes
 
   Dashing.debugMode = false
@@ -38,15 +38,5 @@ Dashing.on 'ready', ->
       draggable:
         stop: Dashing.showGridsterInstructions
         start: -> Dashing.currentWidgetPositions = Dashing.getWidgetPositions()
-
-# Dashing is a Sinatra based framework that lets you build beautiful dashboards.
-
-# Check out a demo over here. Here's another one, optimized for 1080p screens.
-
-# Key features:
-
-# Use premade widgets, or fully create your own with scss, html, and coffeescript.
-# Widgets harness the power of data bindings to keep things DRY and simple. Powered by batman.js.
-# Use the API to push data to your dashboards, or make use of a simple ruby DSL for fetching data.
-# Drag & Drop interface for re-arranging your widgets.
-# Host your dashboards on Heroku in less than 30 seconds.
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) )
+      $(".gridster ul:first").gridster().data('gridster').draggable().disable();
