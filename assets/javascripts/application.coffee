@@ -12,7 +12,7 @@ Dashing.on 'ready', ->
   #sets base dimensions; is not web responsive at this point
   #note: if you are going to reduce the size of the widget base dimensions you will need to reduce the data size dimensions as well
   
-  Dashing.numColumns ||= 2
+  # Dashing.numColumns ||= 4
   #widgets need to be resized if this changes
 
   Dashing.debugMode = false
