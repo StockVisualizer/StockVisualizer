@@ -15,23 +15,3 @@ Dashing.gridsterLayout = (positions) ->
 
 Dashing.getWidgetPositions = ->
   $(".gridster ul:first").gridster().data('gridster').serialize()
-
-Dashing.showGridsterInstructions = ->
-  newWidgetPositions = Dashing.getWidgetPositions()
-
-  unless JSON.stringify(newWidgetPositions) == JSON.stringify(Dashing.currentWidgetPositions)
-    Dashing.currentWidgetPositions = newWidgetPositions
-    $('#save-gridster').slideDown()
-    $('#gridster-code').text("
-      <script type='text/javascript'>\n
-      $(function() {\n
-      \ \ Dashing.gridsterLayout('#{JSON.stringify(Dashing.currentWidgetPositions)}')\n
-      });\n
-      </script>
-    ")
-
-$ ->
-  $('#save-gridster').leanModal()
-
-  $('#save-gridster').click ->
-    $('#save-gridster').slideUp()
