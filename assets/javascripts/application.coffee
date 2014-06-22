@@ -11,8 +11,15 @@ Dashing.on 'ready', ->
   Dashing.widget_base_dimensions ||= [300, 360]
   #sets base dimensions; is not web responsive at this point
   #note: if you are going to reduce the size of the widget base dimensions you will need to reduce the data size dimensions as well
-  
-  # Dashing.numColumns ||= 4
+  width = $(window).width()
+  if (width >= 1200)
+    columns = 4
+  else if (width >= 992)
+    columns = 3
+  else if (width >= 768)
+    columns = 2
+
+  Dashing.numColumns ||= columns
   #widgets need to be resized if this changes
 
   Dashing.debugMode = false
