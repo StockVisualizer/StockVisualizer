@@ -1,3 +1,8 @@
+/*
+  Voume job, calls the Yahoo Finance API, grabs the current volume, and sends 
+  the updated figure to the volume widget.
+*/
+
 setInterval(function() {
   console.log("Volume Job is Running");
   for (var k in connections) {
