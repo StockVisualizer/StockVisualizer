@@ -6,8 +6,8 @@
 setInterval(function() {
   console.log("Price Job is Running");
   for (var k in connections) {
-    conn_symbol = connections[k]["symbol"];
-    conn_identifier = connections[k]["id"];
+    conn_symbol = connections[k].symbol;
+    conn_identifier = connections[k].id;
     getPrice(conn_symbol, conn_identifier);
   }
 }, 2 * 1000);
@@ -25,7 +25,7 @@ function getPrice(conn_s, conn_i) {
     });
     response.on("end", function(err) {
       data = JSON.parse(buffer);
-      current_price = data["query"]["results"]["quote"]["AskRealtime"]
+      current_price = data.query.results.quote.AskRealtime;
       for (var i = 1; i <= 10; i++) {
         points.push({
           x: i,
@@ -37,4 +37,4 @@ function getPrice(conn_s, conn_i) {
       }, conn_i);
     });
   });
-};
+}

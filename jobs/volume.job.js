@@ -6,8 +6,8 @@
 setInterval(function() {
   console.log("Volume Job is Running");
   for (var k in connections) {
-    conn_symbol = connections[k]["symbol"];
-    conn_identifier = connections[k]["id"];
+    conn_symbol = connections[k].symbol;
+    conn_identifier = connections[k].id;
     getVolume(conn_symbol, conn_identifier);
   }
 }, 2 * 1000);
@@ -23,7 +23,7 @@ function getVolume(conn_s, conn_i) {
     });
     response.on("end", function(err) {
       data = JSON.parse(buffer);
-      current_volume = data["query"]["results"]["quote"]["Volume"];
+      current_volume = data.query.results.quote.Volume;
       send_event('volume', {
         value: current_volume
       }, conn_i);
