@@ -29,7 +29,7 @@ function getPrice(conn_s, conn_i) {
       for (var i = 1; i <= 10; i++) {
         points.push({
           x: i,
-          y: Math.floor(current_price)
+          y: current_price
         });
       }
       send_event('price', {
