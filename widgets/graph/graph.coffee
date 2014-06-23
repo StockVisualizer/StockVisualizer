@@ -33,7 +33,6 @@ class Dashing.Graph extends Dashing.Widget
 
   onData: (data) ->
     if @graph
-      console.log data
       @graph.series[0].data = data.points
       arr = []
       for element in data.points
