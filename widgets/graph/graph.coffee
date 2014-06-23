@@ -21,8 +21,12 @@ class Dashing.Graph extends Dashing.Widget
         data: [{x:0, y:0}]
         }
       ]
+      min: 0,
+      max: 0
     )
 
+    # This takes whatever your data points are by default, which in this case
+    # is {x:0, y:0}]
     @graph.series[0].data = @get('points') if @get('points')
 
     x_axis = new Rickshaw.Graph.Axis.Time(graph: @graph)
@@ -31,5 +35,25 @@ class Dashing.Graph extends Dashing.Widget
 
   onData: (data) ->
     if @graph
+      console.log data
       @graph.series[0].data = data.points
+      arr = []
+      for element in data.points
+        arr.push(element.y);
+      @graph.max = Math.max.apply(Math, arr) + 2
+      @graph.min = Math.min.apply(Math, arr) - 2
+      # rescales the y axis
+      # y_axis = new Rickshaw.Graph.Axis.Y(graph: @graph, tickFormat: Rickshaw.Fixtures.Number.formatKMBT)
       @graph.render()
+
+
+
+
+
+
+
+
+
+
+
+
