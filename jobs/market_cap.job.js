@@ -10,15 +10,15 @@ setInterval(function() {
   // Every 2 seconds, iterate through all of the connections, update the data
   // by connection
   for (var k in connections) {
-    conn_symbol = connections[k]["symbol"];
-    conn_identifier = connections[k]["id"];
+    conn_symbol = connections[k].symbol;
+    conn_identifier = connections[k].id;
     callYahoo(conn_symbol, conn_identifier);
   }
 }, 2 * 1000);
 
 function callYahoo(conn_s, conn_i) {
   var http = require("http");
-  url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + conn_s + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"
+  var url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + conn_s + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json";
   var request = http.get(url, function(response) {
     var buffer = "";
     var data;
@@ -27,12 +27,12 @@ function callYahoo(conn_s, conn_i) {
     });
     response.on("end", function(err) {
       data = JSON.parse(buffer);
-      current_valuation = data["query"]["results"]["quote"]["MarketCapitalization"];
-      current_valuation_integer = parseInt(current_valuation.substr(0, current_valuation.length - 1))
-      current_valuation = String(current_valuation_integer) + current_valuation.substr(current_valuation.length - 1)
+      current_valuation = data.query.results.quote.MarketCapitalization;
+      current_valuation_integer = parseInt(current_valuation.substr(0, current_valuation.length - 1));
+      current_valuation = String(current_valuation_integer) + current_valuation.substr(current_valuation.length - 1);
       send_event('valuation', {
         current: current_valuation
       }, conn_i);
     });
   });
-};
+}
