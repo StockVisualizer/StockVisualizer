@@ -3,3 +3,11 @@
 <h2 class="value" data-bind="current | prettyNumber | prepend prefix"></h2>
 
 <p class="more-info" data-bind="moreinfo"></p>
+
+<script>
+  $(function() {
+    setInterval(function() {
+      $('.x_tick')[0].style.display = 'none';
+    }, 5);
+  });
+</script>
