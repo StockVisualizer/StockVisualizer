@@ -21,8 +21,6 @@ class Dashing.Graph extends Dashing.Widget
         data: [{x:0, y:0}]
         }
       ]
-      min: 0,
-      max: 0
     )
 
     # This takes whatever your data points are by default, which in this case
