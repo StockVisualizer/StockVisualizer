@@ -3,8 +3,6 @@
   and sends the updated figure to the valuation widget.
 */
 
-// NEED TO CHANGE TO FLOATS
-
 setInterval(function() {
   console.log("Market Cap Job is Running");
   // Every 2 seconds, iterate through all of the connections, update the data
@@ -28,8 +26,8 @@ function callYahoo(conn_s, conn_i) {
     response.on("end", function(err) {
       data = JSON.parse(buffer);
       current_valuation = data.query.results.quote.MarketCapitalization;
-      current_valuation_integer = parseInt(current_valuation.substr(0, current_valuation.length - 1));
-      current_valuation = String(current_valuation_integer) + current_valuation.substr(current_valuation.length - 1);
+      current_valuation_float = parseFloat(current_valuation.substr(0, current_valuation.length - 1));
+      current_valuation = String(current_valuation_float) + current_valuation.substr(current_valuation.length - 1);
       send_event('valuation', {
         current: current_valuation
       }, conn_i);
