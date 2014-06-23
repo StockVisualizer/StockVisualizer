@@ -4,7 +4,7 @@
 */
 
 setInterval(function() {
-  console.log("Volume Job is Running");
+  // console.log("Volume Job is Running");
   for (var k in connections) {
     conn_symbol = connections[k].symbol;
     conn_identifier = connections[k].id;
