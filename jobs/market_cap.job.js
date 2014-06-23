@@ -4,7 +4,7 @@
 */
 
 setInterval(function() {
-  console.log("Market Cap Job is Running");
+  // console.log("Market Cap Job is Running");
   // Every 2 seconds, iterate through all of the connections, update the data
   // by connection
   for (var k in connections) {

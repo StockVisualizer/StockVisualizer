@@ -4,7 +4,7 @@
 */
 
 setInterval(function() {
-  console.log("PE Job is Running");
+  // console.log("PE Job is Running");
   for (var k in connections) {
     conn_symbol = connections[k].symbol;
     conn_identifier = connections[k].id;
