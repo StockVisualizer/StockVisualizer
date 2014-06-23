@@ -26,7 +26,7 @@ function callYahoo(conn_s, conn_i) {
     response.on("end", function(err) {
       data = JSON.parse(buffer);
       current_valuation = data.query.results.quote.MarketCapitalization;
-      current_valuation_float = parseFloat(current_valuation.substr(0, current_valuation.length - 1));
+      current_valuation_float = parseInt(current_valuation.substr(0, current_valuation.length - 1));
       current_valuation = String(current_valuation_float) + current_valuation.substr(current_valuation.length - 1);
       send_event('valuation', {
         current: current_valuation
