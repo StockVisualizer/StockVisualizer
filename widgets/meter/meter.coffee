@@ -13,3 +13,7 @@ class Dashing.Meter extends Dashing.Widget
     meter.attr("data-bgcolor", meter.css("background-color"))
     meter.attr("data-fgcolor", meter.css("color"))
     meter.knob()
+
+  onData: (data) ->
+      this.value = data.value
+      $(@node).find(".meter").val(this.value).trigger('change')
