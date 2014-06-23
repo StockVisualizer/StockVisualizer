@@ -13,7 +13,6 @@
 <script>
   $(function() {
     $(".form").on("submit", function(e) {
-      e.preventDefault();
       var symbol = $(".input").val();
       $.ajax({
         type: 'put',
