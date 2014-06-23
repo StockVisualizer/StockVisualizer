@@ -25,10 +25,19 @@ function getPrice(conn_s, conn_i) {
     });
     response.on("end", function(err) {
       data = JSON.parse(buffer);
-      current_price = data.query.results.quote.AskRealtime;
-      for (var i = 1; i <= 10; i++) {
+      current_price = parseInt(data.query.results.quote.AskRealtime);
+      if (points.length === 0) {
+        for (var i = 1; i <= 10; i++) {
+          points.push({
+            x: i,
+            y: current_price
+          });
+        }
+      } else {
+        var last_x = points[points.length - 1].x;
+        points.shift();
         points.push({
-          x: i,
+          x: ++last_x,
           y: current_price
         });
       }

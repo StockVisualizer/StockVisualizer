@@ -12,7 +12,6 @@ Dashing.on 'ready', ->
   #sets base dimensions; is not web responsive at this point
   #note: if you are going to reduce the size of the widget base dimensions you will need to reduce the data size dimensions as well
   width = $(window).width()
-  console.log width
   if width >= 1200
     window.columns = 4
   else if width >= 992 && width < 1200
@@ -20,7 +19,6 @@ Dashing.on 'ready', ->
   else
     window.columns = 2
 
-  console.log window.columns
   Dashing.numColumns ||= window.columns
   #widgets need to be resized if this changes
 
