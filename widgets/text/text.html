@@ -7,23 +7,34 @@
 <p class="updated-at" data-bind="updatedAtMessage"></p>
 
 <center><form class="form" accept-charset="utf-8">
-  <input class="input" type="text" name="ticker" autocomplete="off" placeholder="AAPL">
+  <input class="input" type="text" name="ticker" autocomplete="off" placeholder="e.g. AAPL">
   <input type="hidden" id="connectionID">
 </form></center>
 <script>
-  $(function() {
-    $(".form").on("submit", function(e) {
-      e.preventDefault();
-      var symbol = $(".input").val();
-      $.ajax({
-        type: 'put',
-        url: '/search',
-        data: {
-          symbol: symbol,
-          connectionID: connectionID
-        }
-      });
-      $(".input").blur();
-    });
-  });
+   $(function() {
+   $(".form").on("submit", function(e) {
+     e.preventDefault();
+     var symbol = $(".input").val();
+     $.ajax({
+       type: 'put',
+       url: '/search',
+       data: {
+         symbol: symbol,
+         connectionID: connectionID
+       }
+     });
+     $(".input").blur();
+     $(".input").val("");
+     title = $('.title')[0];
+     var url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22" + symbol + "%22%29%0A%09%09&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json";
+     $.ajax({
+       type: 'get',
+       url: url
+     }).done(function(data) {
+       company_name = data.query.results.quote.Name;
+       console.log(company_name);
+       title.textContent = company_name;
+     });
+   });
+ });
 </script>
