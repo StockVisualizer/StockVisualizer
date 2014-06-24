@@ -23,7 +23,7 @@ function getPE(conn_s, conn_i) {
     });
     response.on("end", function(err) {
       data = JSON.parse(buffer);
-      peratio = data.query.results.quote.PERatio;
+      peratio = parseFloat(data.query.results.quote.PERatio);
       send_event('peratio', {
         peratio: peratio
       }, conn_i);
