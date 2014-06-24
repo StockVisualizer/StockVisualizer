@@ -23,7 +23,7 @@ function getVolume(conn_s, conn_i) {
         });
         response.on("end", function(err) {
             data = JSON.parse(buffer);
-            current_volume = data.query.results.quote.Volume;
+            current_volume = parseInt(data.query.results.quote.Volume);
             send_event('volume', {
                 value: current_volume
             }, conn_i);
