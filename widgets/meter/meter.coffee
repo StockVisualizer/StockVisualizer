@@ -5,6 +5,7 @@ class Dashing.Meter extends Dashing.Widget
   constructor: ->
     super
     @observe 'value', (value) ->
+      console.log value
       $(@node).find(".meter").val(value).trigger('change')
 
   ready: ->
@@ -13,6 +14,6 @@ class Dashing.Meter extends Dashing.Widget
     meter.attr("data-fgcolor", meter.css("color"))
     meter.knob()
 
-  onData: (data) ->
-      this.value = data.value
-      $(@node).find(".meter").val(this.value).trigger('change')
+  # onData: (data) ->
+  #     this.value = data.value
+  #     $(@node).find(".meter").val(this.value).trigger('change')
